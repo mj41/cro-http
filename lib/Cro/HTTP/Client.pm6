@@ -501,7 +501,7 @@ class Cro::HTTP::Client {
         my $request = Cro::HTTP::Request.new(:$method, :$target);
         $request.append-header('Host', $url.host);
         if self {
-            $request.append-header('content-type', $.content-type) if $.content-type;
+            $request.append-header('Content-Type', $.content-type) if $.content-type;
             self!set-headers($request, @.headers.List);
             $.cookie-jar.add-to-request($request, $url) if $.cookie-jar;
             if %!auth && !(%options<auth>:exists) {
@@ -527,7 +527,7 @@ class Cro::HTTP::Client {
                 }
             }
             when 'content-type' {
-                $request.append-header('content-type', $value)
+                $request.append-header('Content-Type', $value)
             }
             when 'headers' {
                 self!set-headers($request, $value.List) if $value ~~ Iterable;

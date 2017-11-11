@@ -72,7 +72,7 @@ role Cro::HTTP::Message does Cro::Message {
     }
 
     method content-type() {
-        with self.header('content-type') {
+        with self.header('Content-Type') {
             Cro::MediaType.parse($_)
         }
         else {
